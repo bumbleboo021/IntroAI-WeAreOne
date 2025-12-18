@@ -280,7 +280,7 @@ if not st.session_state['analysis_done']:
             if uploaded_file:
                 st.audio(uploaded_file)
                 
-                selected_model = st.selectbox("Chọn mô hình AI:",options = ['gemini-2.5-flash', 'gemini-2.5-pro'], key = "selected_model_option")
+                selected_model = st.selectbox("Chọn mô hình AI:",options = ['gemini-2.5-flash', 'gemini-2.5-pro', 'gemini-3-flash'], key = "selected_model_option")
                 
                 if st.button("🚀 KÍCH HOẠT PHÂN TÍCH", type="primary", use_container_width=True):
                     with st.status("🔄 Đang xử lý dữ liệu...", expanded=True):
@@ -294,7 +294,7 @@ if not st.session_state['analysis_done']:
                                 Bạn là một thư ký chuyên nghiệp. Hãy xử lý file âm thanh này:
                                 1. Tạo một **Tiêu đề (Title)** ngắn gọn, súc tích (dưới 7 từ) cho cuộc họp này.
                                 2. Tóm tắt CÁC Ý CHÍNH QUAN TRỌNG NHẤT, và các ý tóm tắt được trình bày rõ ràng, XUỐNG DÒNG ĐÚNG NƠI ĐÚNG LÚC.
-                                3. Gỡ băng với các nội dung được gỡ được trình bày rõ ràng, xuống dòng đúng nơi đúng lúc. VÀ CÓ KÈM VỚI THỚI GIAN CỦA MỖI NỘI DUNG NGHE ĐƯỢC TRONG VIDEO.
+                                3. Gỡ băng với các nội dung được gỡ được trình bày rõ ràng, xuống dòng đúng nơi đúng lúc, VÀ CÓ KÈM VỚI THỚI GIAN CỦA MỖI NỘI DUNG NGHE ĐƯỢC TRONG VIDEO.
                                 4. Với những dữ liệu không nghe rõ, không tự sinh ra dữ liệu ảo, phải tự kiểm tra dữ liệu đã nghe được xem có hợp lý với ngữ cảnh không.
                                 5. Đánh giá cảm xúc đoạn ghi âm (Vui vẻ/Căng thẳng/Bình thường).
 
@@ -408,7 +408,7 @@ else:
 
     with tab3:
         col_m1, col_m2 = st.columns([1, 3])
-        selected_model = st.selectbox("Chọn mô hình AI:",options = ['gemini-2.5-flash', 'gemini-2.5-pro'], key = "selected_model_option")
+        selected_model = st.selectbox("Chọn mô hình AI:",options = ['gemini-2.5-flash', 'gemini-2.5-pro', 'gemini-3-flash'], key = "selected_model_option")
         with col_m1:
             st.info("AI sẽ vẽ sơ đồ tư duy từ nội dung tóm tắt.")
             if st.button("✨ Vẽ Mindmap"):
@@ -494,6 +494,7 @@ else:
                         st.session_state['chat_history'].append({"role": "model", "text": resp.text})
                         save_current_session()
                     except Exception as e: st.error(f"Lỗi: {e}")
+
 
 
 
